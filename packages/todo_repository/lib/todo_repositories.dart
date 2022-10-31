@@ -9,6 +9,7 @@ await DBProvider.db.addTodo(DBTodo(
 //id: todo.id,
 nombre: todo.nombre,
 apellido: todo.apellido,
+//ci: todo.ci,
 /*establ: todo.establ,
 fecha: todo.fecha,
 cedula: todo.cedula,
@@ -25,8 +26,23 @@ Future <List<TodoModel>> getAllTodo() async {
        //id: e.id, 
        nombre: e.nombre, 
        apellido: e.apellido,
+       //ci: e.ci,
+
        )).
        toList();
 
+}
+
+Future <List<TodoModel>> searchTodo (String keyword) async {
+  final tt = await DBProvider.db.searchTodo(keyword);
+  return tt
+  .map((e) => TodoModel(
+    nombre: e.nombre, 
+    apellido: e.apellido,))
+    .toList();
+}
+
+Future<void> deleteTodoId (int id) async {
+  await DBProvider.db.deleteTodoId(id);
 }
 }

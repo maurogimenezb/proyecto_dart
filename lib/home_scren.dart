@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:proyecto_dart/create_todo/create_todo.dart';
 import 'package:todo_models/todo_model.dart';
@@ -11,13 +13,50 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State <HomeScreen> {
+  TextEditingController keyword = TextEditingController();
 @override 
 Widget build (BuildContext context) {
   return Scaffold(
-    appBar: AppBar(),  
+    appBar: AppBar(
+      title: Container(
+        width: double.infinity,
+        height: 40,
+        decoration: BoxDecoration (
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Center(
+          child: TextField(
+        controller: keyword,
+        onSubmitted: (value) {
+          setState(() {
+            keyword == value;
+          });
+        },
+        decoration: InputDecoration (
+          prefixIcon: IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              setState(() {
+                TodoRepository().searchTodo(keyword.text);
+              });
+            },
+          ),
+          suffixIcon: IconButton (
+            icon: const Icon(Icons.clear),
+            onPressed: () {
+              keyword.text = '';
+            },
+          ),
+          hintText: 'Buscar por Nombre',
+          border: InputBorder.none,
+        ),
+        ),
+        )),
+    ),  
     // paso 4 aggregar en pantalla lod datos
     body: FutureBuilder(
-     future: TodoRepository().getAllTodo(),
+     future: keyword.text.length > 0 ? TodoRepository().searchTodo(keyword.text) : TodoRepository().getAllTodo(),
      builder: (context, snapshot) {
       if (snapshot.connectionState != ConnectionState.done) {
         return const Center(child: CircularProgressIndicator(),
@@ -39,18 +78,24 @@ Widget build (BuildContext context) {
                     ),
                     child: Card (
                       child: ListTile (
-                        title: Text(todo[index].nombre + ' ' + todo[index].apellido + ' ' + todo[index].apellido,
+                        title: Text(todo[index].nombre + ' ' + todo[index].apellido + ' ' + todo[index].nombre,
                           //todo[index].nombre,
                         ),
-                        trailing: IconButton (
-                          onPressed: () {},
+                        /* trailing: IconButton (
+                          onPressed: () {
+                            setState(() {
+                              TodoRepository().deleteTodoId(todo[index].id);
+                           });
+                          },
                           icon: const Icon(
                             Icons.delete,
                             color: Colors.red,
                           ),
-                        ),
+                        ),*/
                         subtitle: Text (
-                          todo[index].apellido,
+                         // todo[index].id.toString(),
+                          todo[index].nombre,
+
                         ),
 
                       ),),

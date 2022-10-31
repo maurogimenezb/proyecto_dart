@@ -24,6 +24,7 @@ iniDB () async {
         "nombre TEXT,"
         "apellido TEXT"
 
+
         ")");
       });
 }
@@ -46,4 +47,16 @@ Future <List<DBTodo>> getAllTodo () async {
   return list;
 }
 
+deleteTodoId (int id) async {
+final db = await database;
+return db.delete("MY_LIST", where: "id = ?", whereArgs: [id]);
+}
+
+Future <List<DBTodo>> searchTodo (String keyword) async {
+  final db = await database;
+  List<Map<String, dynamic>> result =
+    await db.rawQuery('SELECT * FROM MY_LIST WHERE nombre=?', [keyword]);
+    List<DBTodo> todo = result.map((todo) => DBTodo.fromMap(todo)).toList();
+    return todo;
+}
 }

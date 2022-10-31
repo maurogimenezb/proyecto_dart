@@ -4,6 +4,7 @@ class DBTodo {
   //int id;
   String nombre;
   String apellido;
+  //String ci;
   /*String establ;
   String fecha;
   int cedula;
@@ -12,9 +13,11 @@ class DBTodo {
   String actual;*/
 
   DBTodo ({
-   // this.id = 0,
+   //this.id = 0,
     this.nombre = '',
     this.apellido = '',
+    //this.ci = '',
+
    /* this.establ = '',
     this.fecha = '',
     this.cedula = 0,

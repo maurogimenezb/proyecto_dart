@@ -6,6 +6,9 @@ import 'package:todo_repository/todo_repositories.dart';
 class CreateTodo extends StatelessWidget {
   TextEditingController teNombre = TextEditingController();
   TextEditingController teApellido = TextEditingController();
+  //TextEditingController teCi = TextEditingController();
+  //TextEditingValue teCI = TextEditingValue();
+
 
   CreateTodo({super.key});
 
@@ -48,6 +51,7 @@ class CreateTodo extends StatelessWidget {
             ),
           ),
 
+
           Container( 
             width:  double.infinity,
             height: 60,
@@ -59,9 +63,11 @@ class CreateTodo extends StatelessWidget {
             child: ElevatedButton (
               onPressed: (){
                 final todo = TodoModel(
-                  //id: 2, 
+                  //id: 0, 
                   nombre: teNombre.text, 
                   apellido: teApellido.text, 
+                  //ci: teCi.text,
+
                   );
 
                   TodoRepository().addTodo(todo);
