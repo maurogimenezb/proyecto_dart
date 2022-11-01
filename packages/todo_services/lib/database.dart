@@ -22,8 +22,13 @@ iniDB () async {
     await db.execute("CREATE TABLE MY_LIST ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
         "nombre TEXT,"
-        "apellido TEXT"
-
+        "apellido TEXT,"
+        "ci TEXT,"
+        "establ TEXT,"
+        "fecha TEXT,"
+        "dosis TEXT,"
+        "vacuna TEXT,"
+        "actual TEXT"
 
         ")");
       });
@@ -32,9 +37,9 @@ iniDB () async {
 addTodo (DBTodo todo) async {
   final db = await database;
   var raw = await db.rawInsert(
-    "INSERT Into MY_LIST (nombre ,apellido)"
-  " VALUES (?,?)",
-  [todo.nombre, todo.apellido],
+    "INSERT Into MY_LIST (nombre ,apellido ,ci ,establ ,fecha ,dosis ,vacuna ,actual)"
+  " VALUES (?,?,?,?,?,?,?,?)",
+  [todo.nombre, todo.apellido, todo.ci, todo.establ, todo.fecha, todo.dosis, todo.vacuna, todo.actual],
   );
   return raw;
 }
@@ -50,6 +55,11 @@ Future <List<DBTodo>> getAllTodo () async {
 deleteTodoId (int id) async {
 final db = await database;
 return db.delete("MY_LIST", where: "id = ?", whereArgs: [id]);
+}
+
+deleteAllTasks () async {
+  final db = await database;
+  return db.rawDelete("Delete FROM MY_LIST");
 }
 
 Future <List<DBTodo>> searchTodo (String keyword) async {

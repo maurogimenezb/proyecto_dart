@@ -6,9 +6,12 @@ import 'package:todo_repository/todo_repositories.dart';
 class CreateTodo extends StatelessWidget {
   TextEditingController teNombre = TextEditingController();
   TextEditingController teApellido = TextEditingController();
-  //TextEditingController teCi = TextEditingController();
-  //TextEditingValue teCI = TextEditingValue();
-
+  TextEditingController teCi = TextEditingController();
+  TextEditingController teEstabl = TextEditingController();
+  TextEditingController teFecha = TextEditingController();
+  TextEditingController teDosis = TextEditingController();
+  TextEditingController teVacuna = TextEditingController();
+  TextEditingController teActual = TextEditingController();
 
   CreateTodo({super.key});
 
@@ -34,6 +37,7 @@ class CreateTodo extends StatelessWidget {
                 )),
             ),
           ),
+
           Container(
             margin: const EdgeInsets.only(
               top: 10,
@@ -51,6 +55,90 @@ class CreateTodo extends StatelessWidget {
             ),
           ),
 
+            Container(
+            margin: const EdgeInsets.only(
+              top: 10,
+              left: 15,
+              right: 15,
+            ),
+            child: TextField (
+              controller: teEstabl,
+              decoration: const InputDecoration(
+                hintText: 'Escribir Establecimiento',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5),
+                  ),
+                )),
+            ),
+          ),
+
+          Container(
+            margin: const EdgeInsets.only(
+              top: 10,
+              left: 15,
+              right: 15,
+            ),
+            child: TextField (
+              controller: teFecha,
+              decoration: const InputDecoration(
+                hintText: 'Escribir Fecha de Aplicacion',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5),
+                  ),
+                )),
+            ),
+          ),
+
+            Container(
+            margin: const EdgeInsets.only(
+              top: 10,
+              left: 15,
+              right: 15,
+            ),
+            child: TextField (
+              controller: teDosis,
+              decoration: const InputDecoration(
+                hintText: 'Escribir Dosis',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5),
+                  ),
+                )),
+            ),
+          ),
+
+            Container(
+            margin: const EdgeInsets.only(
+              top: 10,
+              left: 15,
+              right: 15,
+            ),
+            child: TextField (
+              controller: teVacuna,
+              decoration: const InputDecoration(
+                hintText: 'Escribir nombre de Vacuna',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5),
+                  ),
+                )),
+            ),
+          ),
+
+            Container(
+            margin: const EdgeInsets.only(
+              top: 10,
+              left: 15,
+              right: 15,
+            ),
+            child: TextField (
+              controller: teActual,
+              decoration: const InputDecoration(
+                hintText: 'Escribir Ultima Actualizacion',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5),
+                  ),
+                )),
+            ),
+          ),
 
           Container( 
             width:  double.infinity,
@@ -66,9 +154,16 @@ class CreateTodo extends StatelessWidget {
                   //id: 0, 
                   nombre: teNombre.text, 
                   apellido: teApellido.text, 
-                  //ci: teCi.text,
+                  ci: teCi.text,
+                  establ: teEstabl.text,
+                  fecha: teFecha.text,
+                  dosis: teDosis.text,
+                  vacuna: teVacuna.text,
+                  actual: teActual.text,
 
                   );
+
+
 
                   TodoRepository().addTodo(todo);
                   Navigator.pop(context);

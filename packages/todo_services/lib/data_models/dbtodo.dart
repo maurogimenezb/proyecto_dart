@@ -4,26 +4,23 @@ class DBTodo {
   //int id;
   String nombre;
   String apellido;
-  //String ci;
-  /*String establ;
+  String ci;
+  String establ;
   String fecha;
-  int cedula;
-  int dosis;
+  String dosis;
   String vacuna;
-  String actual;*/
+  String actual;
 
   DBTodo ({
-   //this.id = 0,
+  // this.id = 0,
     this.nombre = '',
     this.apellido = '',
-    //this.ci = '',
-
-   /* this.establ = '',
+    this.ci = '',
+    this.establ = '',
     this.fecha = '',
-    this.cedula = 0,
-    this.dosis = 0,
+    this.dosis = '',
     this.vacuna = '',
-    this.actual = '',*/
+    this.actual = '',
 
   });
 
@@ -31,12 +28,12 @@ class DBTodo {
    // id: json ['id'] ?? 0,
     nombre: json ['nombre'] ?? '',
     apellido: json ['apellido'] ?? '',
-    /*establ: json ['establ'] ?? '',
+    ci: json ['ci'] ?? '',
+    establ: json ['establ'] ?? '',
     fecha: json ['fecha'] ?? '',
-    cedula: json ['cedula'] ?? 0,
-    dosis: json ['dosis'] ?? 0,
+    dosis: json ['dosis'] ?? '',
     vacuna: json ['vacuna'] ?? '',
-    actual: json ['actual'] ?? '',*/
+    actual: json ['actual'] ?? '',
 
   );
 
@@ -44,12 +41,12 @@ class DBTodo {
     //"id": id,
     "nombre": nombre,
     "apellido": apellido,
-   /* "establ": establ,
+    "ci": ci,
+    "establ": establ,
     "fecha": fecha,
-    "cedula": cedula,
     "dosis": dosis,
     "vacuna": vacuna,
-    "actual": actual,*/
+    "actual": actual,
   };
 
 }

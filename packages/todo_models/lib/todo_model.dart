@@ -1,24 +1,24 @@
 class TodoModel {
-  //final int id;
+  //final int ? id;
   final String nombre;
   final String apellido;
-  //final String ci;
-  /*final String establ;
+  final String ci;
+  final String establ;
   final String fecha;
-  final int dosis;
+  final String dosis;
   final String vacuna;
-  final String actual;*/
+  final String actual;
 
   TodoModel ({
-    //required this.id,
+    //this.id,
     required this.nombre,
     required this.apellido,
-    //required this.ci,
-    //required this.establ,
-    //required this.fecha,
-    //required this.dosis,
-   // required this.vacuna,
-   // required this.actual,
+    required this.ci,
+    required this.establ,
+    required this.fecha,
+    required this.dosis,
+    required this.vacuna,
+    required this.actual,
 
   });
 

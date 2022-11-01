@@ -18,6 +18,14 @@ class _HomeScreenState extends State <HomeScreen> {
 Widget build (BuildContext context) {
   return Scaffold(
     appBar: AppBar(
+      actions: [
+        IconButton(
+          onPressed: (){
+            TodoRepository().deleteAllTasks();
+          }, 
+          icon: const Icon(Icons.delete),
+        ),
+      ],
       title: Container(
         width: double.infinity,
         height: 40,
@@ -78,10 +86,10 @@ Widget build (BuildContext context) {
                     ),
                     child: Card (
                       child: ListTile (
-                        title: Text(todo[index].nombre + ' ' + todo[index].apellido + ' ' + todo[index].nombre,
+                        title: Text(todo[index].nombre + ' ' + todo[index].apellido,
                           //todo[index].nombre,
-                        ),
-                        /* trailing: IconButton (
+                        ),/*
+                         trailing: IconButton (
                           onPressed: () {
                             setState(() {
                               TodoRepository().deleteTodoId(todo[index].id);
@@ -94,7 +102,7 @@ Widget build (BuildContext context) {
                         ),*/
                         subtitle: Text (
                          // todo[index].id.toString(),
-                          todo[index].nombre,
+                          todo[index].vacuna,
 
                         ),
 
